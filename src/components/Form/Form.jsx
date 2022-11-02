@@ -1,11 +1,13 @@
 import style from './Form.module.css';
 import React, { Component } from 'react';
 
+
 export class Form extends Component {
   state = {
     name: '',
     number: ''
   };
+
 
   reset = () => {
     this.setState({
@@ -24,7 +26,7 @@ export class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log(this.state);
+    console.log("handleSubmit",this.state);
     this.props.moveData(this.state);
     this.reset();
   };
