@@ -27,6 +27,9 @@ export class App extends Component {
       number: evt.number,
     };
 
+    if (this.state.contacts.map(item => item.name).includes(evt.name))
+      return alert(`${evt.name} is already in contacts`);
+
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
