@@ -6,15 +6,13 @@ import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
-    contacts: [
-      
-    ],
+    contacts: [],
 
     filter: '',
   };
 
   handleInputChange = evt => {
-    console.log(evt.currentTarget.value);
+    // console.log(evt.currentTarget.value);
 
     this.setState({
       filter: evt.currentTarget.value,
@@ -22,7 +20,7 @@ export class App extends Component {
   };
 
   onSubmitMoveDataToApp = evt => {
-    console.log('App evt', evt);
+    // console.log('App evt', evt);
     const contact = {
       id: nanoid(),
       name: evt.name,
