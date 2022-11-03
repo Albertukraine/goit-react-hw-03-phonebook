@@ -1,24 +1,22 @@
 import style from './Form.module.css';
 import React, { Component } from 'react';
 
-
 export class Form extends Component {
   state = {
     name: '',
-    number: ''
+    number: '',
   };
-
 
   reset = () => {
     this.setState({
-    name: '',
-    number: ''
-    })
+      name: '',
+      number: '',
+    });
   };
 
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
-    console.log(evt.currentTarget.name);
+    // console.log(evt.currentTarget.name);
     this.setState({
       [name]: value,
     });
@@ -26,20 +24,20 @@ export class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log("handleSubmit",this.state);
+    // console.log('handleSubmit', this.state);
     this.props.moveData(this.state);
     this.reset();
   };
 
-
   render() {
-    
     return (
       <form onSubmit={this.handleSubmit} className={style.form}>
         <label>
           {' '}
           Name{}
-          <input
+          
+        </label>
+        <input
             className={style.input}
             onChange={this.handleInputChange}
             value={this.state.name}
@@ -50,12 +48,13 @@ export class Form extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
 
         <label>
           {' '}
           Number{}
-          <input
+         
+        </label>
+        <input
             className={style.input}
             onChange={this.handleInputChange}
             value={this.state.number}
@@ -66,7 +65,6 @@ export class Form extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
 
         <button type="submit">Add Contact</button>
       </form>

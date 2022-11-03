@@ -1,38 +1,28 @@
-import React, { Component } from 'react';
 import style from './Filter.module.css';
 
-export class Filter extends Component {
-    state = {
-      filter: '',
-     
-    }; 
+export const Filter = props => {
+    // console.log("props in filter", props);
+    
+const {onInput, inputText} = props;
 
-   
-      handleInputChange = evt => {
-        const { filter } = evt.currentTarget;
-        console.log(evt.currentTarget.value);
-       
-        this.setState({
-          [filter]: evt.currentTarget.value
-        });
-      };
-
-      render() { return (
+      return (
+        <div className={style.filterWrapper}>
+        
         <label>
-          {' '}
           Find contacts by name
-          <input
-            className={style.input}
-            onChange={this.handleInputChange}
-            value={this.state.number}
-            type="text"
-            name="filter"
-            placeholder="Type name to find"
-          />
         </label>
+         <input
+         className={style.input}
+         onChange={onInput}
+         value={inputText}
+         type="text"
+         name="filter"
+         placeholder="Type name to find"
+       />
+        
+        </div>
 
 
       )
       }
 
-}

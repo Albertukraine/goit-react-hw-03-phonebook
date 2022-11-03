@@ -1,14 +1,15 @@
-import { nanoid } from 'nanoid';
-
+import style from './NameList.module.css';
 export const NameList = props => {
   const { contacts } = props;
-  console.log('PROPS', props);
   return (
-    <ul>
+    <ul className={style.list}>
       {contacts.map(contact => (
         <li key={contact.id}>
-          <span>{contact.name}-------</span>
-          <span>{contact.number}</span>
+            <p className={style.contactWrapper}>
+          <span className={style.nameText}>{contact.name}</span>
+          <span className={style.numberValue}>{contact.number}</span>
+
+            </p>
         </li>
       ))}
     </ul>

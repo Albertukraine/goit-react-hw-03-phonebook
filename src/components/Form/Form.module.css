@@ -1,6 +1,8 @@
 .form{
   display: grid;
   gap: 15px;
+  margin-bottom: 15px;
+  width: 300px;
 }
 
 .input{
