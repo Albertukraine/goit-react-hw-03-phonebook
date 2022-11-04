@@ -37,7 +37,7 @@ export class App extends Component {
 
     this.setState({
       contacts: this.state.contacts.filter(
-        item => item.id != contactToDeleteID
+        item => item.id !== contactToDeleteID
       ),
     });
   };
