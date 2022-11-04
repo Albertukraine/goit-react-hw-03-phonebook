@@ -12,15 +12,12 @@ export class App extends Component {
   };
 
   handleInputChange = evt => {
-    // console.log(evt.currentTarget.value);
-
     this.setState({
       filter: evt.currentTarget.value,
     });
   };
 
   onSubmitMoveDataToApp = evt => {
-    // console.log('App evt', evt);
     const contact = {
       id: nanoid(),
       name: evt.name,
@@ -33,14 +30,20 @@ export class App extends Component {
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
     }));
+  };
 
-    // console.log('at state now', this.state);
+  onDeleteContact = evt => {
+    const contactToDeleteID = evt.currentTarget.name;
+
+    this.setState({
+      contacts: this.state.contacts.filter(
+        item => item.id != contactToDeleteID
+      ),
+    });
   };
 
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
-    // console.log("NORM FILTER",normalizedFilter);
-    // console.log("arrayNames", this.state.contacts);
     const visibleContacts = this.state.contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -52,7 +55,10 @@ export class App extends Component {
           inputText={this.state.filter}
           onInput={this.handleInputChange}
         />
-        <NameList contacts={visibleContacts} />
+        <NameList
+          contacts={visibleContacts}
+          deleteContact={this.onDeleteContact}
+        />
       </>
     );
   }
