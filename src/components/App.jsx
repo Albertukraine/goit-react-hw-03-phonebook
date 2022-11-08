@@ -42,17 +42,19 @@ export class App extends Component {
   };
 
   componentDidMount() {
+    // console.log("at storage now", localStorage.getItem('contacts'));
+
     const contactData = localStorage.getItem('contacts');
     const parsedData = JSON.parse(contactData);
 
-    this.setState({ contacts: parsedData });
-  }
+    if (parsedData) {this.setState({ contacts: parsedData })};
+  };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     if (this.state.contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
-  }
+  };
 
   render() {
     const normalizedFilter = this.state.filter.toLowerCase();
